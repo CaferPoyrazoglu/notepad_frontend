@@ -16,20 +16,12 @@ const menuGroups = ref([
   {
     menuItems: [
       {
-        label: 'Hızlı Not',
-        route: '/'
+        label: 'Etiketler',
+        route: '/tags'
       },
       {
-        label: 'Çalışma Masası',
-        route: '/desk'
-      },
-      {
-        label: 'Blog',
-        route: '/'
-      },
-      {
-        label: 'Gündem',
-        route: '/'
+        label: 'Notlar',
+        route: '/notes'
       }
     ]
   }

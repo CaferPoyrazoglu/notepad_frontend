@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import DeskView from "@/views/DeskView.vue";
 import HomeView from "@/views/Dashboard/HomeView.vue";
+import TagsView from "@/views/TagsView.vue";
+import NotesView from "@/views/NotesView.vue";
 
 const routes = [
   {
@@ -13,11 +14,19 @@ const routes = [
     }
   },
   {
-    path: '/desk',
-    name: 'desk',
-    component: DeskView,
+    path: '/notes',
+    name: 'notes',
+    component: NotesView,
     meta: {
-      title: 'Desk'
+      title: 'Notes'
+    }
+  },
+  {
+    path: '/tags',
+    name: 'tags',
+    component: TagsView,
+    meta: {
+      title: 'Tags'
     }
   }
 ]

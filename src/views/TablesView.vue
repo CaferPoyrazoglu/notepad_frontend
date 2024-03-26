@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
-import TableOne from '@/components/Tables/TableOne.vue'
+import TableOne from '@/components/Tables/TagsTable.vue'
 import TableTwo from '@/components/Tables/TableTwo.vue'
 import TableThree from '@/components/Tables/TableThree.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
