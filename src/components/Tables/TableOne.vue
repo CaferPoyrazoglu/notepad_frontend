@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import BrandThree from '@/assets/images/brand/brand-01.svg'
+import BrandThree from '@/assets/images/logo/icons8-vue-js.svg'
 
 const brandData = ref([
   {
@@ -54,7 +54,7 @@ const brandData = ref([
           <div class="flex-shrink-0">
             <img :src="brand.logo" alt="Brand" />
           </div>
-          <p class="hidden text-black dark:text-white sm:block">{{ brand.name }}</p>
+          <a href="" class="hidden text-black dark:text-white sm:block">{{ brand.name }}</a>
         </div>
 
         <div class="flex items-center justify-center p-2.5 xl:p-5">
