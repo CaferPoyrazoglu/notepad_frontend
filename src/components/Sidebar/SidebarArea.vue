@@ -41,8 +41,8 @@ const menuGroups = ref([
                     fill=""
                   />
                 </svg>`,
-        label: 'Anasayfa',
-        route: '/anasayfa'
+        label: 'Çalışma Masası',
+        route: '/desk'
       }
     ]
   }
