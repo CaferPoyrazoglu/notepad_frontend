@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import SigninView from '@/views/Authentication/SigninView.vue'
 import SignupView from '@/views/Authentication/SignupView.vue'
-import CalendarView from '@/views/CalendarView.vue'
+import AnasayfaView from '@/views/AnasayfaView.vue'
 import BasicChartView from '@/views/Charts/BasicChartView.vue'
 import ECommerceView from '@/views/Dashboard/ECommerceView.vue'
 import FormElementsView from '@/views/Forms/FormElementsView.vue'
@@ -12,6 +12,7 @@ import ProfileView from '@/views/ProfileView.vue'
 import TablesView from '@/views/TablesView.vue'
 import AlertsView from '@/views/UiElements/AlertsView.vue'
 import ButtonsView from '@/views/UiElements/ButtonsView.vue'
+import HomeView from "@/views/AnasayfaView.vue";
 
 const routes = [
   {
@@ -23,11 +24,19 @@ const routes = [
     }
   },
   {
-    path: '/calendar',
-    name: 'calendar',
-    component: CalendarView,
+    path: '/anasayfa',
+    name: 'anasayfa',
+    component: AnasayfaView,
     meta: {
-      title: 'Calendar'
+      title: 'Anasayfa'
+    }
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomeView,
+    meta: {
+      title: 'Home'
     }
   },
   {
