@@ -31,7 +31,7 @@ const routes = [
     },
   },
   {
-    path: '/note',
+    path: '/note/:noteId',
     name: 'note',
     component: NoteView,
     meta: {

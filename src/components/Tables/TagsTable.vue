@@ -4,7 +4,32 @@ import axiosInstance from '@/api/axiosInstance'
 import { VueBasicPagination } from 'vue-basic-pagination';
 import 'vue-basic-pagination/dist/style.css'
 
-const tagData = ref(null)
+const tagData = ref([
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  },
+  {
+    text: '⏳',
+  }
+])
 const currentPage = ref(1)
 const totalPages = ref(0)
 const handlePageChange = (newPage) => fetchTags(newPage - 1, 8)
@@ -27,7 +52,6 @@ async function fetchTags(page = 0, size = 8) {
   <div
     class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
   >
-    <h4 class="mb-6 text-xl font-semibold text-black dark:text-white">Etiket</h4>
     <div class="flex flex-col">
       <div
         v-for="(tag, key) in tagData"
@@ -38,7 +62,7 @@ async function fetchTags(page = 0, size = 8) {
       >
         <div class="flex items-center gap-3 p-2.5 xl:p-5">
 
-          <p class="hidden text-black dark:text-white sm:block">#{{ tag.text }}</p>
+          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">{{ tag.text }}</p>
         </div>
 
 

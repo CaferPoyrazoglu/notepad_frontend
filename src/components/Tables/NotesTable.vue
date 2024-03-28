@@ -4,7 +4,41 @@ import axiosInstance from '@/api/axiosInstance'
 import { VueBasicPagination } from 'vue-basic-pagination';
 import 'vue-basic-pagination/dist/style.css'
 
-const noteData = ref(null)
+const noteData = ref([
+  {
+    title: '⏳',
+    id: "loading"
+  },
+  {
+    title: '⏳',
+    id: "loading"
+
+  },
+  {
+    title: '⏳',
+    id: "loading"
+  },
+  {
+    title: '⏳',
+    id: "loading"
+  },
+  {
+    title: '⏳',
+    id: "loading"
+  },
+  {
+    title: '⏳',
+    id: "loading"
+  },
+  {
+    title: '⏳',
+    id: "loading"
+  },
+  {
+    title: '⏳',
+    id: "loading"
+  }
+])
 const currentPage = ref(1)
 const totalPages = ref(0)
 const handlePageChange = (newPage) => fetchNotes(newPage - 1, 8)
@@ -26,7 +60,6 @@ async function fetchNotes(page = 0, size = 8) {
   <div
       class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
   >
-    <h4 class="mb-6 text-xl font-semibold text-black dark:text-white">Başlık</h4>
 
     <div class="flex flex-col">
 
@@ -38,10 +71,12 @@ async function fetchNotes(page = 0, size = 8) {
           key === noteData.length - 1 ? '' : 'border-b border-stroke dark:border-strokedark'
         }`"
       >
+        <router-link :to="{ name: 'note', params: { noteId: note.id }}">
         <div class="flex items-center gap-3 p-2.5 xl:p-5">
 
-          <p class="hidden text-black dark:text-white sm:block">{{ note.title }}</p>
+          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">{{ note.title }}</p>
         </div>
+        </router-link>
 
 
       </div>
