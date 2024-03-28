@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from "@/views/Dashboard/HomeView.vue";
 import TagsView from "@/views/TagsView.vue";
 import NotesView from "@/views/NotesView.vue";
+import NoteView from "@/views/NoteView.vue";
 
 const routes = [
   {
@@ -27,7 +28,15 @@ const routes = [
     component: TagsView,
     meta: {
       title: 'Tags'
-    }
+    },
+  },
+  {
+    path: '/note',
+    name: 'note',
+    component: NoteView,
+    meta: {
+      title: 'Note'
+    },
   }
 ]
 

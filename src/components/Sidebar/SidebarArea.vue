@@ -22,6 +22,10 @@ const menuGroups = ref([
       {
         label: 'Notlar',
         route: '/notes'
+      },
+      {
+        label: 'Not (test)',
+        route: '/note'
       }
     ]
   }
