@@ -2,6 +2,9 @@
 import { onMounted, ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
 import { VueBasicPagination } from '@/components/pagination'
+import {useIsLoadingStore} from "@/stores/isLoading";
+
+const isLoadingStore = useIsLoadingStore()
 
 const tagData = ref([])
 const currentPage = ref(1)
@@ -12,12 +15,14 @@ onMounted(() => fetchTags(currentPage.value - 1, 8))
 
 async function fetchTags(page = 0, size = 8) {
   try {
+    isLoadingStore.isLoading = true
     const { data } = await axiosInstance.get('tag/all', {
       params: { page, size },
       withCredentials: true
     })
     tagData.value = data.content
     totalPages.value = data.totalPages
+    isLoadingStore.isLoading = false
   } catch (error) {}
 }
 </script>
@@ -43,7 +48,7 @@ async function fetchTags(page = 0, size = 8) {
     </div>
 
     <div class="py-1">
-      <VueBasicPagination
+      <VueBasicPagination v-if="!isLoadingStore.isLoading"
         :total-rows="totalPages"
         v-model="currentPage"
         @change="handlePageChange"

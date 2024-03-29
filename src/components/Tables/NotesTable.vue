@@ -4,7 +4,9 @@ import axiosInstance from '@/api/axiosInstance'
 import { VueBasicPagination } from '@/components/pagination'
 import {useRouter} from "vue-router";
 import {useSidebarStore} from "@/stores/sidebar";
+import {useIsLoadingStore} from "@/stores/isLoading";
 
+const isLoadingStore = useIsLoadingStore()
 const sidebarStore = useSidebarStore()
 const noteData = ref([])
 const currentPage = ref(1)
@@ -24,12 +26,14 @@ async function redirect({note}: { note: any }) {
 }
 async function fetchNotes(page = 0, size = 8) {
   try {
+    isLoadingStore.isLoading = true
     const { data } = await axiosInstance.get('note/all', {
       params: { page, size },
       withCredentials: true
     })
     noteData.value = data.content
     totalPages.value = data.totalPages
+    isLoadingStore.isLoading = false
   } catch (error) {}
 }
 </script>
@@ -55,7 +59,7 @@ async function fetchNotes(page = 0, size = 8) {
     </div>
 
     <div class="py-1">
-      <VueBasicPagination
+      <VueBasicPagination v-if="!isLoadingStore.isLoading"
         :total-rows="totalPages"
         v-model="currentPage"
         @change="handlePageChange"
