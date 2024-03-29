@@ -1,33 +1,32 @@
 <script setup lang="ts">
-import {onMounted, ref} from 'vue'
+import { onMounted, ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
-import { VueBasicPagination } from 'vue-basic-pagination';
-import 'vue-basic-pagination/dist/style.css'
+import { VueBasicPagination } from '@/components/pagination'
 
 const tagData = ref([
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   },
   {
-    text: '⏳',
+    text: ''
   }
 ])
 const currentPage = ref(1)
@@ -38,14 +37,16 @@ onMounted(() => fetchTags(currentPage.value - 1, 8))
 
 async function fetchTags(page = 0, size = 8) {
   try {
-    const { data } = await axiosInstance.get('tag/all', { params: { page, size }, withCredentials: true })
+    const { data } = await axiosInstance.get('tag/all', {
+      params: { page, size },
+      withCredentials: true
+    })
     tagData.value = data.content
     totalPages.value = data.totalPages
   } catch (error) {
-    console.log("test")
+    console.log('test')
   }
 }
-
 </script>
 
 <template>
@@ -61,18 +62,19 @@ async function fetchTags(page = 0, size = 8) {
         }`"
       >
         <div class="flex items-center gap-3 p-2.5 xl:p-5">
-
-          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">👉 {{ tag.text }}</p>
+          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">
+            📌 {{ tag.text }}
+          </p>
         </div>
-
-
       </div>
     </div>
 
     <div class="py-1">
-      <VueBasicPagination :total-rows="totalPages" v-model="currentPage" @change="handlePageChange"/>
-
+      <VueBasicPagination
+        :total-rows="totalPages"
+        v-model="currentPage"
+        @change="handlePageChange"
+      />
     </div>
-
   </div>
 </template>

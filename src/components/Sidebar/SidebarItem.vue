@@ -26,10 +26,10 @@ const handleItemClick = () => {
   <li>
     <router-link
       :to="item.route"
-      class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-secondary duration-300 ease-in-out dark:hover:bg-meta-4"
+      class="group relative flex items-center gap-2.5 py-2 px-4 duration-500 ease-in-out hover:text-white hover:bg-third hover:rounded-3xl hover:font-extrabold "
       @click.prevent="handleItemClick"
       :class="{
-        ' dark:bg-meta-4': sidebarStore.page === item.label
+        'text-white font-extrabold bg-third rounded-3xl ': sidebarStore.page === item.label
       }"
     >
       <span v-html="item.icon"></span>

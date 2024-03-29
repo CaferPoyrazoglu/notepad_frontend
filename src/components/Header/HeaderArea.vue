@@ -9,9 +9,7 @@ const { isSidebarOpen, toggleSidebar } = useSidebarStore()
 </script>
 
 <template>
-  <header
-    class="sticky top-0 z-999 flex w-full bg-white dark:bg-primary"
-  >
+  <header class="sticky top-0 z-999 flex w-full bg-white dark:bg-primary">
     <div class="flex flex-grow items-center justify-between py-4 px-4 shadow-3 md:px-6 2xl:px-11">
       <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
         <!-- Hamburger Toggle BTN -->
@@ -31,21 +29,21 @@ const { isSidebarOpen, toggleSidebar } = useSidebarStore()
                 :class="{ '!w-full delay-300': !isSidebarOpen }"
               ></span>
               <span
-                class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm  delay-150 duration-200 ease-in-out bg-white"
+                class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm delay-150 duration-200 ease-in-out bg-white"
                 :class="{ '!w-full delay-400': !isSidebarOpen }"
               ></span>
               <span
-                class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm  delay-200 duration-200 ease-in-out bg-white"
+                class="relative top-0 left-0 my-1 block h-0.5 w-0 rounded-sm delay-200 duration-200 ease-in-out bg-white"
                 :class="{ '!w-full delay-500': !isSidebarOpen }"
               ></span>
             </span>
             <span class="du-block absolute right-0 h-full w-full rotate-45">
               <span
-                class="absolute left-2.5 top-0 block h-full w-0.5 rounded-sm  delay-300 duration-200 ease-in-out bg-white"
+                class="absolute left-2.5 top-0 block h-full w-0.5 rounded-sm delay-300 duration-200 ease-in-out bg-white"
                 :class="{ '!h-0 delay-[0]': !isSidebarOpen }"
               ></span>
               <span
-                class="delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm  duration-200 ease-in-out bg-white"
+                class="delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm duration-200 ease-in-out bg-white"
                 :class="{ '!h-0 dealy-200': !isSidebarOpen }"
               ></span>
             </span>
@@ -56,9 +54,7 @@ const { isSidebarOpen, toggleSidebar } = useSidebarStore()
           <img src="@/assets/images/logo/logo-icon.svg" alt="Logo" />
         </router-link>
       </div>
-      <div class="hidden sm:block">
-
-      </div>
+      <div class="hidden sm:block"></div>
 
       <div class="flex items-center gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">

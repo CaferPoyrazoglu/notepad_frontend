@@ -43,15 +43,13 @@ const menuGroups = ref([
         <h1 class="text-third font-bold text-2xl mx-12.5 mt-5.5">.notepad</h1>
       </router-link>
 
-      <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false">
-
-      </button>
+      <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false"></button>
     </div>
     <!-- SIDEBAR HEADER -->
 
     <div class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
       <!-- Sidebar Menu -->
-      <nav class="px-4 lg:px-6">
+      <nav class="mt-6 px-4 lg:px-6">
         <template v-for="menuGroup in menuGroups" :key="menuGroup.name">
           <div>
             <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">{{ menuGroup.name }}</h3>
@@ -68,7 +66,6 @@ const menuGroups = ref([
         </template>
       </nav>
       <!-- Sidebar Menu -->
-
     </div>
   </aside>
 </template>

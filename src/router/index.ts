@@ -1,11 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from "@/views/Dashboard/HomeView.vue";
-import TagsView from "@/views/TagsView.vue";
-import NotesView from "@/views/NotesView.vue";
-import NoteView from "@/views/NoteView.vue";
+import HomeView from '@/views/Dashboard/HomeView.vue'
+import TagsView from '@/views/TagsView.vue'
+import NotesView from '@/views/NotesView.vue'
+import NoteView from '@/views/NoteView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView,
+    meta: {
+      title: 'Login'
+    }
+  },
   {
     path: '/',
     name: 'Home',
@@ -28,7 +37,7 @@ const routes = [
     component: TagsView,
     meta: {
       title: 'Tags'
-    },
+    }
   },
   {
     path: '/note/:noteId',
@@ -36,7 +45,7 @@ const routes = [
     component: NoteView,
     meta: {
       title: 'Note'
-    },
+    }
   }
 ]
 
