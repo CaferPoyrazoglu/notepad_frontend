@@ -74,7 +74,7 @@ async function fetchNotes(page = 0, size = 8) {
         <router-link :to="{ name: 'note', params: { noteId: note.id }}">
         <div class="flex items-center gap-3 p-2.5 xl:p-5">
 
-          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">{{ note.title }}</p>
+          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">👉 {{ note.title }}</p>
         </div>
         </router-link>
 

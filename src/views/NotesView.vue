@@ -6,7 +6,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 <template>
   <DefaultLayout>
-      <div class="col-span-12 xl:col-span-8">
+      <div class="">
         <NotesTable />
       </div>
   </DefaultLayout>

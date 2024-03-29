@@ -62,7 +62,7 @@ async function fetchTags(page = 0, size = 8) {
       >
         <div class="flex items-center gap-3 p-2.5 xl:p-5">
 
-          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">{{ tag.text }}</p>
+          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">👉 {{ tag.text }}</p>
         </div>
 
 
