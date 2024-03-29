@@ -1,51 +1,66 @@
 <template>
   <ul class="pagination-container">
     <li>
-      <button class="pagination-btn pagination-first-btn" :class="small ? 'pagination-btn-small' : ''"
-              @click="first()">
+      <button
+        :class="small ? 'pagination-btn-small' : ''"
+        class="pagination-btn pagination-first-btn"
+        @click="first()"
+      >
         <span>{{ props.firstBtn }}</span>
       </button>
     </li>
 
     <li>
-      <button class="pagination-btn pagination-prev-btn" :class="small ? 'pagination-btn-small' : ''"
-              @click="prev()">
+      <button
+        :class="small ? 'pagination-btn-small' : ''"
+        class="pagination-btn pagination-prev-btn"
+        @click="prev()"
+      >
         <span>{{ props.prevBtn }}</span>
       </button>
     </li>
 
     <li v-if="paginationItems.length > 4 && parseInt(props.modelValue) > 3">
-      <button class="pagination-btn" :class="small ? 'pagination-btn-small' : ''">
-        ...
-      </button>
+      <button :class="small ? 'pagination-btn-small' : ''" class="pagination-btn">...</button>
     </li>
 
     <template v-for="(item, index) in paginationItems" :key="index">
       <li v-if="verifyRange(item)">
-        <button class="pagination-btn"
-                :class="[item == parseInt(props.modelValue) ? 'active-pagination-btn' : '', small ? 'pagination-btn-small' : '']"
-                @click="updateModel(item)">
+        <button
+          :class="[
+            item == parseInt(props.modelValue) ? 'active-pagination-btn' : '',
+            small ? 'pagination-btn-small' : ''
+          ]"
+          class="pagination-btn"
+          @click="updateModel(item)"
+        >
           {{ item }}
         </button>
       </li>
     </template>
 
-    <li v-if="paginationItems.length > 4 && parseInt(props.modelValue) < paginationItems.length - 1">
-      <button class="pagination-btn" :class="small ? 'pagination-btn-small' : ''">
-        ...
-      </button>
+    <li
+      v-if="paginationItems.length > 4 && parseInt(props.modelValue) < paginationItems.length - 1"
+    >
+      <button :class="small ? 'pagination-btn-small' : ''" class="pagination-btn">...</button>
     </li>
 
     <li>
-      <button class="pagination-btn pagination-next-btn" :class="small ? 'pagination-btn-small' : ''"
-              @click="next()">
+      <button
+        :class="small ? 'pagination-btn-small' : ''"
+        class="pagination-btn pagination-next-btn"
+        @click="next()"
+      >
         <span>{{ props.nextBtn }}</span>
       </button>
     </li>
 
     <li>
-      <button class="pagination-btn pagination-last-btn" :class="small ? 'pagination-btn-small' : ''"
-              @click="last()">
+      <button
+        :class="small ? 'pagination-btn-small' : ''"
+        class="pagination-btn pagination-last-btn"
+        @click="last()"
+      >
         <span>{{ props.lastBtn }}</span>
       </button>
     </li>
@@ -67,23 +82,23 @@ const props = defineProps({
     default: 1
   },
   modelValue: {
-    default: "",
+    default: ''
   },
   prevBtn: {
     type: String,
-    default: "‹",
+    default: '‹'
   },
   nextBtn: {
     type: String,
-    default: "›",
+    default: '›'
   },
   firstBtn: {
     type: String,
-    default: "«",
+    default: '«'
   },
   lastBtn: {
     type: String,
-    default: "»",
+    default: '»'
   },
   small: {
     type: Boolean,
@@ -98,8 +113,13 @@ const paginationItems = computed(() => {
 
 const verifyRange = (item: number) => {
   if (parseInt(props.modelValue) < 4 && item < 5) return true
-  else if (parseInt(props.modelValue) == paginationItems.value.length && item > parseInt(props.modelValue) - 3) return true
-  else if (item >= parseInt(props.modelValue) - 1 && item <= parseInt(props.modelValue) + 1) return true
+  else if (
+    parseInt(props.modelValue) == paginationItems.value.length &&
+    item > parseInt(props.modelValue) - 3
+  )
+    return true
+  else if (item >= parseInt(props.modelValue) - 1 && item <= parseInt(props.modelValue) + 1)
+    return true
   else return false
 }
 
@@ -108,7 +128,8 @@ const prev = () => {
 }
 
 const next = () => {
-  if (parseInt(props.modelValue) < paginationItems.value.length) updateModel(parseInt(props.modelValue) + 1)
+  if (parseInt(props.modelValue) < paginationItems.value.length)
+    updateModel(parseInt(props.modelValue) + 1)
 }
 
 const first = () => {
@@ -120,10 +141,9 @@ const last = () => {
 }
 
 const updateModel = (num: number) => {
-  emit("update:modelValue", num);
-  emit("change", num);
+  emit('update:modelValue', num)
+  emit('change', num)
 }
-
 </script>
 
 <style scoped>
@@ -162,5 +182,4 @@ const updateModel = (num: number) => {
   background-color: #a11744;
   border-color: #a11744;
 }
-
 </style>

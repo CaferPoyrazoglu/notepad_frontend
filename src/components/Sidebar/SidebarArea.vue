@@ -12,6 +12,10 @@ onClickOutside(target, () => {
   sidebarStore.isSidebarOpen = false
 })
 
+function setPage() {
+    sidebarStore.page = "Anasayfa"
+}
+
 const menuGroups = ref([
   {
     menuItems: [
@@ -40,7 +44,7 @@ const menuGroups = ref([
     <!-- SIDEBAR HEADER -->
     <div class="">
       <router-link to="/">
-        <h1 class="text-third font-bold text-2xl mx-12.5 mt-5.5">.notepad</h1>
+        <h1 @click="setPage()" class="text-third font-bold text-2xl mx-12.5 mt-5.5">.notepad</h1>
       </router-link>
 
       <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false"></button>

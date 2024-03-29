@@ -1,6 +1,6 @@
 import axiosInstance from '@/api/axiosInstance'
 import router from '@/router'
-import { useAuthStore } from '@/stores/authStore.js'
+import { useAuthStore } from '@/stores/authStore.ts'
 
 axiosInstance.interceptors.response.use(
   (response) => response,

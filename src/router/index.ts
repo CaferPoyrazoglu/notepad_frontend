@@ -5,12 +5,14 @@ import TagsView from '@/views/TagsView.vue'
 import NotesView from '@/views/NotesView.vue'
 import NoteView from '@/views/NoteView.vue'
 import LoginView from '@/views/LoginView.vue'
+import { useAuthStore } from '@/stores/authStore'
 
 const routes = [
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: LoginView,
+    beforeEnter: redirectIfAuthenticated,
     meta: {
       title: 'Login'
     }
@@ -19,6 +21,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: HomeView,
+    beforeEnter: authenticatedGuard,
     meta: {
       title: 'Home'
     }
@@ -27,6 +30,7 @@ const routes = [
     path: '/notes',
     name: 'notes',
     component: NotesView,
+    beforeEnter: authenticatedGuard,
     meta: {
       title: 'Notes'
     }
@@ -35,6 +39,7 @@ const routes = [
     path: '/tags',
     name: 'tags',
     component: TagsView,
+    beforeEnter: authenticatedGuard,
     meta: {
       title: 'Tags'
     }
@@ -43,11 +48,30 @@ const routes = [
     path: '/note/:noteId',
     name: 'note',
     component: NoteView,
+    beforeEnter: authenticatedGuard,
     meta: {
       title: 'Note'
     }
   }
 ]
+
+function authenticatedGuard(to: any, from: any, next: any): void {
+  const authStore = useAuthStore()
+  const isUserAuthenticated: boolean = authStore.isAuthenticated
+  console.log(authStore.isAuthenticated)
+  if (!isUserAuthenticated) {
+    next({ name: 'login' })
+  } else next()
+}
+
+function redirectIfAuthenticated(to: any, from: any, next: any): void {
+  const authStore = useAuthStore()
+  if (authStore.isAuthenticated) {
+    next({ name: 'Home' })
+  } else {
+    next()
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,7 +82,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `Vue.js ${to.meta.title} | TailAdmin - Vue.js Tailwind CSS Dashboard Template`
+  document.title = `${to.meta.title}`
   next()
 })
 

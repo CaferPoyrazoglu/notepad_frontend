@@ -1,2 +1,3 @@
-import VueBasicPagination from "./VueBasicPagination.vue";
-export { VueBasicPagination };
+import VueBasicPagination from './VueBasicPagination.vue'
+
+export { VueBasicPagination }

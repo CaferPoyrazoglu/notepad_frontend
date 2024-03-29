@@ -3,32 +3,7 @@ import { onMounted, ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
 import { VueBasicPagination } from '@/components/pagination'
 
-const tagData = ref([
-  {
-    text: ''
-  },
-  {
-    text: ''
-  },
-  {
-    text: ''
-  },
-  {
-    text: ''
-  },
-  {
-    text: ''
-  },
-  {
-    text: ''
-  },
-  {
-    text: ''
-  },
-  {
-    text: ''
-  }
-])
+const tagData = ref([])
 const currentPage = ref(1)
 const totalPages = ref(0)
 const handlePageChange = (newPage) => fetchTags(newPage - 1, 8)
@@ -43,15 +18,13 @@ async function fetchTags(page = 0, size = 8) {
     })
     tagData.value = data.content
     totalPages.value = data.totalPages
-  } catch (error) {
-    console.log('test')
-  }
+  } catch (error) {}
 }
 </script>
 
 <template>
   <div
-    class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+    class="h-screen rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
   >
     <div class="flex flex-col">
       <div
@@ -62,8 +35,8 @@ async function fetchTags(page = 0, size = 8) {
         }`"
       >
         <div class="flex items-center gap-3 p-2.5 xl:p-5">
-          <p class="hidden text-black text-xl font-medium dark:text-white sm:block">
-            📌 {{ tag.text }}
+          <p class=" text-black text-xl font-medium dark:text-white sm:block">
+            {{ tag.text }}
           </p>
         </div>
       </div>
