@@ -1,6 +1,6 @@
 // noinspection JSCheckFunctionSignatures
 import { defineStore } from 'pinia'
-import {useStorage} from "@vueuse/core";
+import { useStorage } from '@vueuse/core'
 
 export const useAuthStore = defineStore('auth', () => {
   const isAuthenticated = useStorage('isAuthenticated', false)
@@ -19,7 +19,5 @@ export const useAuthStore = defineStore('auth', () => {
     userName.value = null
   }
 
-  return { isAuthenticated, userRole, userName, login, logout}
+  return { isAuthenticated, userRole, userName, login, logout }
 })
-
-

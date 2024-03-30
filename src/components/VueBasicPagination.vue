@@ -163,7 +163,7 @@ const updateModel = (num: number) => {
   line-height: 1.25;
   color: #a11744;
   background-color: #fff;
-  font-weight: bold;
+  font-weight: medium;
 }
 
 .pagination-btn-small {
@@ -178,8 +178,8 @@ const updateModel = (num: number) => {
 
 .active-pagination-btn,
 .active-pagination-btn:hover {
-  color: #fff;
-  background-color: #a11744;
-  border-color: #a11744;
+  color: #a11744;
+  background-color: transparent;
+  font-weight: bolder;
 }
 </style>

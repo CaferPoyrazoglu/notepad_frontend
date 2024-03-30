@@ -6,6 +6,7 @@ import NotesView from '@/views/NotesView.vue'
 import NoteView from '@/views/NoteView.vue'
 import LoginView from '@/views/LoginView.vue'
 import { useAuthStore } from '@/stores/authStore'
+import NewNoteView from '@/views/NewNoteView.vue'
 
 const routes = [
   {
@@ -24,6 +25,15 @@ const routes = [
     beforeEnter: authenticatedGuard,
     meta: {
       title: 'Home'
+    }
+  },
+  {
+    path: '/new',
+    name: 'New',
+    component: NewNoteView,
+    beforeEnter: authenticatedGuard,
+    meta: {
+      title: 'New'
     }
   },
   {

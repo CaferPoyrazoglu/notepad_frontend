@@ -4,13 +4,12 @@ import { onMounted, ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
 import { useRoute } from 'vue-router'
 
-
 const content = ref('')
 const route = useRoute()
 
 onMounted(() => {
   const noteId = route.params.noteId
-    return fetchNoteById(noteId)
+  return fetchNoteById(noteId)
 })
 async function fetchNoteById(noteId) {
   try {
