@@ -2,6 +2,7 @@
 import axiosInstance from '@/api/axiosInstance'
 import { ref } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import Editor from 'primevue/editor';
 
 const newNoteRequest = ref({
   title: '',
@@ -24,26 +25,23 @@ async function newNote() {
       <div class="flex flex-col gap-9">
         <form class="space-y-4 md:space-y-6" @submit.prevent="newNote">
           <div class="p-6.5">
-            <label class="mb-2.5 block text-third dark:text-white"> Başlık </label>
+            <label class="m-2.5 block text-third dark:text-white"> Başlık </label>
             <input
               v-model="newNoteRequest.title"
+              placeholder="Yazınız için bir başlık girin"
               class="w-full rounded border-[1.5px] text-black border-stroke bg-transparent py-3 px-5 font-normal outline-none transition disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
               type="text"
             />
-            <label class="mb-2.5 block text-third dark:text-white"> Etiketler </label>
+            <label class="m-2.5 block text-third dark:text-white"> Etiketler </label>
             <input
               v-model="newNoteRequest.tags"
+              placeholder="Etiketler boşluk yada virgül ile ayırılabilir (Örn: sağlık, teknoloji, yazılım)"
               class="w-full rounded border-[1.5px] text-black border-stroke bg-transparent py-3 px-5 font-normal outline-none transition disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
               type="text"
             />
             <div class="mb-6">
-              <label class="mb-2.5 block text-third dark:text-white"> İçerik </label>
-              <textarea
-                v-model="newNoteRequest.text"
-                class="w-full rounded border-[1.5px] text-black border-stroke bg-transparent py-3 px-5 font-normal outline-none transition disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                placeholder=""
-                rows="6"
-              ></textarea>
+              <label class="m-2.5 block text-third dark:text-white"> İçerik </label>
+              <Editor v-model="newNoteRequest.text" editorStyle="height: 320px" />
             </div>
 
             <button
