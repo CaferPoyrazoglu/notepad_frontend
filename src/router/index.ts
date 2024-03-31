@@ -68,7 +68,6 @@ const routes = [
 function authenticatedGuard(to: any, from: any, next: any): void {
   const authStore = useAuthStore()
   const isUserAuthenticated: boolean = authStore.isAuthenticated
-  console.log(authStore.isAuthenticated)
   if (!isUserAuthenticated) {
     next({ name: 'login' })
   } else next()

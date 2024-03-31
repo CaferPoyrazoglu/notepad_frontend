@@ -2,7 +2,6 @@
 import axiosInstance from '@/api/axiosInstance'
 import { ref } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import Editor from 'primevue/editor';
 
 const newNoteRequest = ref({
   title: '',
@@ -41,7 +40,6 @@ async function newNote() {
             />
             <div class="mb-6">
               <label class="m-2.5 block text-third dark:text-white"> İçerik </label>
-              <Editor v-model="newNoteRequest.text" editorStyle="height: 320px" />
             </div>
 
             <button

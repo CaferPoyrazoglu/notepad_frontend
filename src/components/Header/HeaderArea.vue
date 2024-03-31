@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { useSidebarStore } from '@/stores/sidebar'
 import DropdownUser from './DropdownUser.vue'
+import { useIsLoadingStore } from '@/stores/isLoading'
+import LoadingView from "@/views/LoadingView.vue";
+
+const isLoadingStore = useIsLoadingStore()
+
 
 const { isSidebarOpen, toggleSidebar, page } = useSidebarStore()
 </script>
@@ -16,7 +21,6 @@ const { isSidebarOpen, toggleSidebar, page } = useSidebarStore()
           class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
           @click="
             () => {
-              console.log('Toggling Sidebar')
               toggleSidebar()
             }
           "
@@ -49,7 +53,8 @@ const { isSidebarOpen, toggleSidebar, page } = useSidebarStore()
           </span>
         </button>
       </div>
-      <h1 class="text-black font-bold text-xl text-third">{{ page }}</h1>
+      <LoadingView v-if="isLoadingStore.isLoading"></LoadingView>
+      <h1 v-else class="text-black font-bold text-xl text-third">{{ page }}</h1>
       <div class="flex items-center gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
           <li></li>
