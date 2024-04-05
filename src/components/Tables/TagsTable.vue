@@ -30,16 +30,35 @@ async function fetchTags(page = 0, size = 20) {
 <template>
   <div class="mt-2 mx-6">
     <div class="flex flex-col">
+      <div class="flex flex-col">
+        <div class="grid text-black grid-cols-3 sm:grid-cols-5 text-sm font-bold">
+            <h5>&nbsp#</h5>
+            <h5>Kullanım Sayısı</h5>
+            <h5>Oluşturan</h5>
+
+        </div>
+      </div>
+
       <div
         v-for="(tag, key) in tagData"
         :key="key"
-        :class="`grid grid-cols-3 sm:grid-cols-2 ${
+        :class="`grid text-black grid-cols-3 sm:grid-cols-5 ${
           key === tagData.length - 1 ? '' : 'border-b border-stroke border-opacity-60'
         }`"
       >
         <div class="flex items-center gap-3 xl:p-1">
           <p class="text-black text-md font-normal">
-            <span class="text-third">▪</span> {{ tag.text }}
+           {{ tag.text }}
+          </p>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <p class="text-black text-md font-normal">
+            {{ tag.count }}
+          </p>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <p class="text-black text-md font-normal">
+            {{ tag.createdBy.email }}
           </p>
         </div>
       </div>
