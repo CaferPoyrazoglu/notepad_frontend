@@ -9,12 +9,19 @@ const newNoteRequest = ref({
   tags: []
 })
 
+const tagString = ref({
+  tags: ''
+})
+
 async function newNote() {
   try {
+    newNoteRequest.value.tags = tagString.value.tags.split(' ').join(',').split(',').map(s => s.trim()).filter(item => item.trim() !== '')
     await axiosInstance.post('note/add', newNoteRequest.value, {
       withCredentials: true
     })
-  } catch (error) {}
+  } catch (error) {
+    console.log(error.toString())
+  }
 }
 </script>
 
@@ -33,7 +40,7 @@ async function newNote() {
             />
             <label class="m-2.5 block text-third dark:text-white"> Etiketler </label>
             <input
-              v-model="newNoteRequest.tags"
+              v-model="tagString.tags"
               placeholder="Etiketler boşluk yada virgül ile ayırılabilir (Örn: sağlık, teknoloji, yazılım)"
               class="w-full rounded border-[1.5px] text-black border-stroke bg-transparent py-3 px-5 font-normal outline-none transition disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
               type="text"
