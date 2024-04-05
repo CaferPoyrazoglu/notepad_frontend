@@ -41,7 +41,7 @@ async function newNote() {
             <div class="mb-6">
               <label class="m-2.5 block text-third dark:text-white"> İçerik </label>
             </div>
-
+            <jodit-editor v-model="newNoteRequest.text" />
             <button
               class="flex w-full justify-center rounded bg-third p-3 font-medium text-gray hover:bg-opacity-90"
             >

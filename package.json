@@ -17,6 +17,7 @@
     "axios": "^1.4.0",
     "flatpickr": "^4.6.13",
     "highlight.js": "^11.9.0",
+    "jodit-vue": "^3.1.0",
     "jsvectormap": "^1.5.3",
     "pinia": "^2.1.7",
     "primevue": "^3.50.0",
