@@ -17,9 +17,9 @@ export default defineComponent({
 
 <template>
   <div :class="customClasses">
-    <label class="mb-2.5 block text-third dark:text-white">
+    <label class="mb-2.5 block text-primary dark:text-white">
       {{ label }}
-      <span v-if="required" class="text-third">*</span>
+      <span v-if="required" class="text-primary">*</span>
     </label>
     <input
       :type="type"

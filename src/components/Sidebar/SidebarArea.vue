@@ -50,7 +50,7 @@ const menuGroups = ref([
 
 <template>
   <aside
-    class="shadow-2xl border border-third border-3 border-opacity-20 absolute left-0 top-0 z-9999 flex h-screen w-60 flex-col overflow-y-hidden bg-primary duration-300 ease-linear lg:static lg:translate-x-0"
+    class="border border-stroke absolute left-0 top-0 z-9999 flex h-screen w-60 flex-col overflow-y-hidden bg-white duration-300 ease-linear lg:static lg:translate-x-0"
     :class="{
       'translate-x-0': sidebarStore.isSidebarOpen,
       '-translate-x-full': !sidebarStore.isSidebarOpen
@@ -60,7 +60,7 @@ const menuGroups = ref([
     <!-- SIDEBAR HEADER -->
     <div class="">
       <router-link to="/">
-        <h1 @click="setPage()" class="text-third font-bold text-2xl mx-12.5 mt-5.5">.notepad</h1>
+        <h1 @click="setPage()" class="text-primary font-extrabold text-2xl mx-12.5 mt-5.5">.notepad</h1>
       </router-link>
 
       <button class="block lg:hidden" @click="sidebarStore.isSidebarOpen = false"></button>

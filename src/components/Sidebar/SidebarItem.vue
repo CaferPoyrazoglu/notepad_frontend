@@ -27,10 +27,10 @@ const handleItemClick = () => {
     <router-link
       :to="item.route"
       :class="{
-        'text-third font-extrabold ': sidebarStore.page === item.label
+        'text-primary font-extrabold ': sidebarStore.page === item.label
       }"
       @click.prevent="handleItemClick"
-      class="group relative flex items-center gap-2.5 py-2 px-4 duration-100 ease-linear hover:text-third hover:font-extrabold"
+      class="group relative flex items-center gap-2.5 py-2 px-4 duration-100 ease-linear hover:text-primary hover:font-extrabold"
     >
       <span v-html="item.icon"></span>
 

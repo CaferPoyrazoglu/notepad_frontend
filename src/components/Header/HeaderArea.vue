@@ -12,13 +12,13 @@ const { isSidebarOpen, toggleSidebar, page } = useSidebarStore()
 
 <template>
   <header
-    class="border border-third border-3 border-opacity-20 sticky top-0 z-999 flex w-full bg-white"
+    class="sticky top-0 z-999 flex w-full bg-white"
   >
-    <div class="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6">
+    <div class="flex flex-grow items-center justify-between py-6.5 px-4  md:px-6">
       <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
         <!-- Hamburger Toggle BTN -->
         <button
-          class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
+          class="z-99999 block rounded-sm bg-white p-1.5 dark:border-strokedark dark:bg-boxdark lg:hidden"
           @click="
             () => {
               toggleSidebar()
@@ -54,7 +54,7 @@ const { isSidebarOpen, toggleSidebar, page } = useSidebarStore()
         </button>
       </div>
       <LoadingView v-if="isLoadingStore.isLoading"></LoadingView>
-      <h1 v-else class="text-black font-bold text-xl text-third">{{ page }}</h1>
+      <h1 v-else class="text-black font-bold text-xl text-primary">{{ page }}</h1>
       <div class="flex items-center gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
           <li></li>

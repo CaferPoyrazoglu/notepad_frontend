@@ -36,11 +36,11 @@ async function login() {
 </script>
 <template>
   <div class="h-screen flex flex-col items-center justify-center">
-    <h1 class="text-third font-bold text-5xl">.notepad</h1>
+    <h1 class="text-primary font-bold text-5xl">.notepad</h1>
     <DefaultAuthCard>
       <form class="space-y-4 md:space-y-6" @submit.prevent="login">
         <div class="mb-4">
-          <label class="mb-2.5 block font-medium text-third text-xl dark:text-white">Email</label>
+          <label class="mb-2.5 block font-medium text-primary text-xl dark:text-white">Email</label>
           <div class="relative">
             <input
               v-model="loginRequest.email"
@@ -69,7 +69,7 @@ async function login() {
         </div>
 
         <div class="mb-4">
-          <label class="mb-2.5 block font-medium text-third text-xl dark:text-white">Şifre</label>
+          <label class="mb-2.5 block font-medium text-primary text-xl dark:text-white">Şifre</label>
           <div class="relative">
             <input
               v-model="loginRequest.password"

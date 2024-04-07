@@ -161,7 +161,7 @@ const updateModel = (num: number) => {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #a11744;
+  color: #2940da;
   background-color: #fff;
   font-weight: medium;
 }
@@ -171,14 +171,14 @@ const updateModel = (num: number) => {
 }
 
 .pagination-btn:hover {
-  color: #a11744;
+  color: #2940da;
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
 
 .active-pagination-btn,
 .active-pagination-btn:hover {
-  color: #a11744;
+  color: #2940da;
   background-color: transparent;
   font-weight: bolder;
 }

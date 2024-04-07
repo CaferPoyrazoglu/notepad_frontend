@@ -12,6 +12,8 @@ const noteData = ref([])
 const currentPage = ref(1)
 const totalPages = ref(0)
 const router = useRouter()
+
+const getDate = (date) => new Date(date).toLocaleString('tr-TR')
 const handlePageChange = (newPage) => {
   return fetchNotes(newPage - 1, 20)
 }
@@ -23,6 +25,20 @@ async function redirect({ note }: { note: any }) {
     sidebarStore.page = note.title
     await router.push('/note/' + note.id)
   } catch (error) {}
+}
+
+async function deleteNote({ note }: { note: any }) {
+  try {
+    isLoadingStore.isLoading = true
+    await axiosInstance.delete('note/delete/' + note.id, {
+      withCredentials: true,
+    })
+    await fetchNotes(currentPage.value - 1, 20)
+    isLoadingStore.isLoading = false
+  } catch (error) {
+    isLoadingStore.isLoading = false
+    console.log(error)
+  }
 }
 
 async function fetchNotes(page = 0, size = 20) {
@@ -42,24 +58,52 @@ async function fetchNotes(page = 0, size = 20) {
 <template>
   <div class="mt-2 mx-6">
     <div class="flex flex-col">
+      <div class="flex flex-col">
+        <div v-if="!(noteData.length == 0)" class="grid grid-cols-3 sm:grid-cols-5 text-primary dark:text-white font-medium">
+          <h5>Başlık</h5>
+          <h5>Oluşturulma Tarihi</h5>
+          <h5>Oluşturan</h5>
+          <h5>Aksiyon</h5>
+
+        </div>
+      </div>
       <div
         v-for="(note, key) in noteData"
         :key="key"
-        :class="`grid grid-cols-3 sm:grid-cols-2 ${
+        :class="`grid text-black grid-cols-3 sm:grid-cols-5 ${
           key === noteData.length - 1 ? '' : 'border-b border-stroke border-opacity-60'
         }`"
       >
         <div class="flex items-center gap-3 xl:p-1">
-          <p class="text-black text-md font-normal" @click="redirect({ note: note })">
-            <span class="text-third">▪</span> {{ note.title }}
+          <a href="#">
+            <p class="text-blue-700 underline text-md font-normal" @click="redirect({ note: note })">
+              {{ note.title }}
+            </p>
+          </a>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <p class="text-black text-md font-normal">
+            {{ getDate(note.createdDate) }}
           </p>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <p class="text-black text-md font-bold">
+            {{ note.createdBy.email }}
+          </p>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <a href="#">
+            <p class="text-red underline text-md font-normal" @click="deleteNote({ note: note })">
+              Sil
+            </p>
+          </a>
         </div>
       </div>
     </div>
 
     <div class="py-1">
       <VueBasicPagination
-        v-if="!isLoadingStore.isLoading"
+        v-if="!(noteData.length == 0)"
         :total-rows="totalPages"
         v-model="currentPage"
         @change="handlePageChange"
