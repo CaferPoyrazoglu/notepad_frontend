@@ -24,7 +24,9 @@ async function redirect({ note }: { note: any }) {
   try {
     sidebarStore.page = note.title
     await router.push('/note/' + note.id)
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 async function deleteNote({ note }: { note: any }) {
@@ -34,6 +36,17 @@ async function deleteNote({ note }: { note: any }) {
       withCredentials: true,
     })
     await fetchNotes(currentPage.value - 1, 20)
+    isLoadingStore.isLoading = false
+  } catch (error) {
+    isLoadingStore.isLoading = false
+    console.log(error)
+  }
+}
+
+async function editNote({ note }: { note: any }) {
+  try {
+    isLoadingStore.isLoading = true
+    await router.push({ path: '/new', query: { id: note.id } })
     isLoadingStore.isLoading = false
   } catch (error) {
     isLoadingStore.isLoading = false
@@ -51,7 +64,9 @@ async function fetchNotes(page = 0, size = 20) {
     noteData.value = data.content
     totalPages.value = data.totalPages
     isLoadingStore.isLoading = false
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 </script>
 
@@ -59,8 +74,9 @@ async function fetchNotes(page = 0, size = 20) {
   <div class="mt-2 mx-6">
     <div class="flex flex-col">
       <div class="flex flex-col">
-        <div v-if="!(noteData.length == 0)" class="grid grid-cols-3 sm:grid-cols-5 text-primary dark:text-white font-medium">
+        <div v-if="!(noteData.length == 0)" class="grid grid-cols-3 sm:grid-cols-5 underline text-primary dark:text-white font-medium">
           <h5>Başlık</h5>
+          <h5>Değiştirilme Tarihi</h5>
           <h5>Oluşturulma Tarihi</h5>
           <h5>Oluşturan</h5>
           <h5>Aksiyon</h5>
@@ -75,11 +91,13 @@ async function fetchNotes(page = 0, size = 20) {
         }`"
       >
         <div class="flex items-center gap-3 xl:p-1">
-          <a href="#">
-            <p class="text-blue-700 underline text-md font-normal" @click="redirect({ note: note })">
-              {{ note.title }}
-            </p>
-          </a>
+            <a href="#" class="text-md font-bold text-blue-700" @click="redirect({ note: note })">{{ note.title }}
+            </a>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <p class="text-black text-md font-normal">
+            {{ getDate(note.lastModifiedDate) }}
+          </p>
         </div>
         <div class="flex items-center gap-3 xl:p-1">
           <p class="text-black text-md font-normal">
@@ -93,7 +111,12 @@ async function fetchNotes(page = 0, size = 20) {
         </div>
         <div class="flex items-center gap-3 xl:p-1">
           <a href="#">
-            <p class="text-red underline text-md font-normal" @click="deleteNote({ note: note })">
+            <p class="text-blue-700 text-md font-normal" @click="editNote({ note: note })">
+              Düzenle
+            </p>
+          </a>
+          <a href="#">
+            <p class="text-red text-md font-normal" @click="deleteNote({ note: note })">
               Sil
             </p>
           </a>

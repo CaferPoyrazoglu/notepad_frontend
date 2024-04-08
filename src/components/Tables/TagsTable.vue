@@ -25,16 +25,32 @@ async function fetchTags(page = 0, size = 20) {
     isLoadingStore.isLoading = false
   } catch (error) {}
 }
+
+async function deleteTag({ tag }: { tag: any }) {
+  console.log(tag)
+  try {
+    isLoadingStore.isLoading = true
+    await axiosInstance.delete('tag/delete/' + tag.id, {
+      withCredentials: true,
+    })
+    await fetchTags(currentPage.value - 1, 20)
+    isLoadingStore.isLoading = false
+  } catch (error) {
+    isLoadingStore.isLoading = false
+    console.log(error)
+  }
+}
 </script>
 
 <template>
   <div class="mt-2 mx-6">
     <div class="flex flex-col">
       <div class="flex flex-col">
-        <div v-if="!(tagData.length == 0)" class="grid grid-cols-3 sm:grid-cols-5 text-primary dark:text-white font-medium">
-            <h5>&nbsp#</h5>
+        <div v-if="!(tagData.length == 0)" class="underline grid grid-cols-3 sm:grid-cols-5 text-primary dark:text-white font-medium">
+            <h5>Etiket</h5>
             <h5>Kullanım Sayısı</h5>
             <h5>Oluşturan</h5>
+            <h5>Aksiyon</h5>
 
         </div>
       </div>
@@ -47,8 +63,7 @@ async function fetchTags(page = 0, size = 20) {
         }`"
       >
         <div class="flex items-center gap-3 xl:p-1">
-          <p class="text-black text-md font-normal">
-           {{ tag.text }}
+          <p class="text-blue-700 text-md font-bold">{{ tag.text }}
           </p>
         </div>
         <div class="flex items-center gap-3 xl:p-1">
@@ -60,6 +75,13 @@ async function fetchTags(page = 0, size = 20) {
           <p class="text-black text-md font-normal">
             {{ tag.createdBy.email }}
           </p>
+        </div>
+        <div class="flex items-center gap-3 xl:p-1">
+          <a href="#">
+            <p class="text-red text-md font-normal" @click="deleteTag({ tag: tag })">
+              Sil
+            </p>
+          </a>
         </div>
       </div>
     </div>

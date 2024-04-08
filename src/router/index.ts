@@ -32,6 +32,7 @@ const routes = [
     name: 'New',
     component: NewNoteView,
     beforeEnter: authenticatedGuard,
+    props: true,
     meta: {
       title: 'New'
     }
