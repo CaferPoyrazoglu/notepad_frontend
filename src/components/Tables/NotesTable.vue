@@ -22,7 +22,7 @@ onMounted(() => fetchNotes(currentPage.value - 1, 20))
 
 async function redirect({ note }: { note: any }) {
   try {
-    sidebarStore.page = note.title
+    sidebarStore.page = ''
     await router.push('/note/' + note.id)
   } catch (error) {
     console.log(error)
