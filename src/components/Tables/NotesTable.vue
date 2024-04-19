@@ -15,10 +15,10 @@ const router = useRouter()
 
 const getDate = (date) => new Date(date).toLocaleString('tr-TR')
 const handlePageChange = (newPage) => {
-  return fetchNotes(newPage - 1, 20)
+  return fetchNotes(newPage - 1, 50)
 }
 
-onMounted(() => fetchNotes(currentPage.value - 1, 20))
+onMounted(() => fetchNotes(currentPage.value - 1, 50))
 
 async function redirect({ note }: { note: any }) {
   try {
@@ -35,7 +35,7 @@ async function deleteNote({ note }: { note: any }) {
     await axiosInstance.delete('note/delete/' + note.id, {
       withCredentials: true,
     })
-    await fetchNotes(currentPage.value - 1, 20)
+    await fetchNotes(currentPage.value - 1, 50)
     isLoadingStore.isLoading = false
   } catch (error) {
     isLoadingStore.isLoading = false
@@ -54,7 +54,7 @@ async function editNote({ note }: { note: any }) {
   }
 }
 
-async function fetchNotes(page = 0, size = 20) {
+async function fetchNotes(page = 0, size = 50) {
   try {
     isLoadingStore.isLoading = true
     const { data } = await axiosInstance.get('note/all', {
